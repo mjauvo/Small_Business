@@ -1,6 +1,7 @@
 .DS_Store
 composer.phar
 /vendor/**
-/nbproject
-/nbproject/private/
+/config/*.sh
+/doc/**
+!/doc/*.pdf
 /nbproject/**
