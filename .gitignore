@@ -5,3 +5,5 @@ composer.phar
 /doc/**
 !/doc/*.pdf
 /nbproject/**
+users.cs.helsinki.fi
+users.cs.helsinki.fi.pub
