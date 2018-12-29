@@ -1,14 +1,9 @@
 <?php
 
-  class HelloWorldController extends BaseController{
-
-    public static function index(){
-      // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
-   	  View::make('home.html');
+    class IndexController extends BaseController
+    {
+        // Display the start page
+        public static function index(){
+            View::make('index.html');
+        }
     }
-
-    public static function sandbox(){
-      // Testaa koodiasi täällä
-      echo 'Hello World!';
-    }
-  }

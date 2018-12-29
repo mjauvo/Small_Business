@@ -1,9 +1,9 @@
 <?php
 
-  $routes->get('/', function() {
-    HelloWorldController::index();
-  });
+// --------------------------------------------------------------------
+//      S t a r t   p a g e
+// --------------------------------------------------------------------
 
-  $routes->get('/hiekkalaatikko', function() {
-    HelloWorldController::sandbox();
-  });
+    $routes->get('/', function() {
+        IndexController::index();
+    });
