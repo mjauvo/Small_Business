@@ -1,5 +1,5 @@
 -- Drop all the database tables in exactly
--- reversed order as they were created.
+-- reverse order as they were created.
 
 --------------------------------------------------------------------
 -- T A B L E S   W I T H   F O R E I G N   K E Y S   ( 1 4 )
