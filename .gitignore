@@ -1,6 +1,7 @@
 .DS_Store
 composer.phar
 /vendor/**
+*.sh
 /config/*.sh
 /doc/**
 !/doc/*.pdf
