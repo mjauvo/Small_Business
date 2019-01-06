@@ -1,5 +1,5 @@
 -- Drop all the database tables in exactly reverse
--- order as they were created, i.e. first goreign
+-- order as they were created, i.e. first foreign
 -- key tables and then primary key tables.
 
 --------------------------------------------------------------------
