@@ -1,3 +1,6 @@
+-- Create all the database tables by creating first
+-- primary key tables and then foreign key tables.
+
 --------------------------------------------------------------------
 -- T A B L E S   W I T H   O N L Y   P R I M A R Y   K E Y S   ( 9 )
 --------------------------------------------------------------------
@@ -270,12 +273,15 @@ CREATE TABLE tblShipment(
 CREATE TABLE tblWorkOrder(
     ID                      INTEGER NOT NULL,
     saleOrderID             INTEGER NOT NULL,
+    shipmentID              INTEGER,
     status                  SMALLINT NOT NULL,
     generationDate          DATE NOT NULL,
     completionDate          DATE,
-    ShipmentID              INTEGER,
     PRIMARY KEY (ID),
     FOREIGN KEY (saleOrderID) REFERENCES tblSaleOrder (ID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE,
+    FOREIGN KEY (ShipmentID) REFERENCES tblShipment (ID)
         ON DELETE RESTRICT
         ON UPDATE CASCADE
 );
