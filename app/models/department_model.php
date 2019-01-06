@@ -115,22 +115,21 @@
             $row = $query->fetch();
         }
 
-		/**
-		 * C R U [D]
-		 * Deletes a department from database.
-		 * 
-		 * @param type $id
-		 */
+        /**
+         * C R U [D]
+         * Deletes a department from database.
+         * 
+         * @param type $id
+         */
         public static function delete($id) {
-			$sql  = "DELETE FROM tblDepartment ";
+            $sql  = "DELETE FROM tblDepartment ";
             $sql .= "WHERE id= :id;";
 
             $query = DB::connection()->prepare($sql);
-			$query->execute(array(
+            $query->execute(array(
                 'id' => $this->id
             ));
 
             $row = $query->fetch();
         }
-
     } // End of class
