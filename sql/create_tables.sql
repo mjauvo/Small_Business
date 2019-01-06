@@ -73,11 +73,11 @@ CREATE TABLE tblUser(
 --------------------------------------------------------------------
 
 CREATE TABLE tblCustomer(
+    ID                      INTEGER NOT NULL,
+    customerTypeID          SMALLINT NOT NULL,
     userID                  INTEGER NOT NULL,
-    customerType            SMALLINT NOT NULL,
-    customerNumber          INTEGER NOT NULL,
-    firstName               VARCHAR(255),
-    lastName                VARCHAR(255),
+    firstName               VARCHAR(255) NOT NULL,
+    lastName                VARCHAR(255) NOT NULL,
     businessID              INTEGER,              
     businessName            VARCHAR(255),
     businessAccountDiscount SMALLINT,
@@ -87,15 +87,18 @@ CREATE TABLE tblCustomer(
     phone                   VARCHAR(255) NOT NULL,
     email                   VARCHAR(255) NOT NULL,
     accountDisabled         BOOLEAN NOT NULL,
-    PRIMARY KEY (userID),
+    PRIMARY KEY (ID),
+    FOREIGN KEY (customerTypeID) REFERENCES tblCustomerType (ID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE,
     FOREIGN KEY (userID) REFERENCES tblUser (ID)
         ON DELETE RESTRICT
         ON UPDATE CASCADE
 );
 
 CREATE TABLE tblEmployee(
+    ID                      INTEGER NOT NULL,
     userID                  INTEGER NOT NULL,
-    employeeID              INTEGER NOT NULL,
     firstName               VARCHAR(255) NOT NULL,
     lastName                VARCHAR(255) NOT NULL,
     dateOfBirth             DATE NOT NULL,
@@ -104,7 +107,7 @@ CREATE TABLE tblEmployee(
     city                    VARCHAR(255) NOT NULL,
     phone                   VARCHAR(255) NOT NULL,
     email                   VARCHAR(255),
-    PRIMARY KEY (userID),
+    PRIMARY KEY (ID),
     FOREIGN KEY (userID) REFERENCES tblUser (ID)
         ON DELETE RESTRICT
         ON UPDATE CASCADE
@@ -123,10 +126,19 @@ CREATE TABLE tblEmployment(
     salaryType              SMALLINT NOT NULL,
     salary                  NUMERIC (8,2) NOT NULL,
     PRIMARY KEY (ID),
-    FOREIGN KEY (employeeID) REFERENCES tblUser (ID)
+    FOREIGN KEY (employeeID) REFERENCES tblEmployee (ID)
         ON DELETE RESTRICT
         ON UPDATE CASCADE,
-    FOREIGN KEY (superiorID) REFERENCES tblUser (ID)
+    FOREIGN KEY (superiorID) REFERENCES tblEmployee (ID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE,
+    FOREIGN KEY (departmentID) REFERENCES tblDepartment (ID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE,
+    FOREIGN KEY (employmentLevelID) REFERENCES tblEmploymentLevel (ID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE,
+    FOREIGN KEY (employmentTypeID) REFERENCES tblEmploymentType (ID)
         ON DELETE RESTRICT
         ON UPDATE CASCADE
 );
@@ -201,7 +213,7 @@ CREATE TABLE tblSaleOrder(
     customerID              INTEGER NOT NULL,
     status                  SMALLINT NOT NULL,
     PRIMARY KEY (ID),
-    FOREIGN KEY (customerID) REFERENCES tblCustomer (userID)
+    FOREIGN KEY (customerID) REFERENCES tblCustomer (ID)
         ON DELETE RESTRICT
         ON UPDATE CASCADE
 );
