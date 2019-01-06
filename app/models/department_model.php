@@ -11,8 +11,8 @@
         //  A T T R I B U T E S
         // --------------------------------------------------
 
-        private $id;
-        private $name;
+        public $id;
+        public $name;
 
         // --------------------------------------------------
         //  C O N S T R U C T O R
@@ -95,7 +95,7 @@
          */
         public static function readAll() {
             $sql = "SELECT * ";
-            $sql .= "FROM tblDepartment;";
+            $sql .= "FROM tblDepartment";
 
             $query = DB::connection()->prepare($sql);
             $query->execute();

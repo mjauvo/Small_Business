@@ -6,6 +6,9 @@
      */
     class DepartmentController extends BaseController {
         public static function showAll() {
-            View::make('department_list.html');
+            $content = array(
+                'departments' => DepartmentModel::readAll()
+            );
+            View::make('department_list', $content);
         }
     }

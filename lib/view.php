@@ -19,7 +19,7 @@
         }
 
         // Tulostetaan Twig:n renderöimä näkymä
-        echo $twig->render($view, $content);
+        echo $twig->render($view.'.html', $content);
       } catch (Exception $e){
         die('Virhe näkymän näyttämisessä: ' . $e->getMessage());
       }

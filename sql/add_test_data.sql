@@ -27,6 +27,15 @@ VALUES
     (91, 'Permanent, part-time'),
     (95, 'Permanent, full-time');
 
+INSERT INTO
+    tblDepartment
+VALUES
+    (10, 'Purchasing'),
+    (20, 'Warehousing & Shipping'),
+    (30, 'Sales & Marketing'),
+    (40, 'Finance & Accounting'),
+    (50, 'Human Resources');
+
 INSERT INTO tblForwarder VALUES ();
 
 INSERT INTO tblProductCategory VALUES ();

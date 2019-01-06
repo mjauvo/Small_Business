@@ -13,11 +13,7 @@
         <h1>Departments</h1>
     </div>
     <div class="bottom-left">
-        {% if products.length == 0 %}
-        <div class="alert alert-danger">
-            NO DEPARTMENTS FOUND!
-        </div>
-        {% else %}
+        {% if departments %}
         <table class="table table-hover table-responsive">
             <thead class="table-striped">
                 <tr>
@@ -27,7 +23,7 @@
             </thead>
             <tbody>
                 <!-- A list of departments -->
-                {% for product in products %}
+                {% for department in departments %}
                 <tr>
                     <td>{{department.id}}</td>
                     <td>{{department.name}} <a href="{{base_path}}/department/{{department.id}}"><span class="glyphicon glyphicon-search"></span></a></td>
@@ -35,6 +31,10 @@
                 {% endfor %}
             </tbody>
         </table>
+        {% else %}
+        <div class="alert alert-danger">
+            NO DEPARTMENTS FOUND!
+        </div>
         {% endif %}
     </div>
 {% endblock %}
