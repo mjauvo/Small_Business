@@ -23,22 +23,6 @@
         }
 
         // --------------------------------------------------
-        //  I N S T A N C E   M E T H O D S
-        // --------------------------------------------------
-
-        public function get_id() {
-            return $this->id;
-        }
-
-        public function get_name() {
-            return $this->name;
-        }
-
-        public function set_name($name) {
-            $this->name = $name;
-        }
-
-        // --------------------------------------------------
         //  S T A T I C   D A T A B A S E   M E T H O D S
         // --------------------------------------------------
 
