@@ -4,6 +4,6 @@
     {
         // Display the start page
         public static function index(){
-            View::make('index.html');
+            View::make('index');
         }
     }
