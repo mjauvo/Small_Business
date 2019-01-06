@@ -41,7 +41,6 @@
                 'id' => $this->id,
                 'name' => $this->name
             ));
-
             $row = $query->fetch();
         }
 
@@ -111,7 +110,6 @@
                 'name' => $this->name,
                 'id' => $this->id
             ));
-
             $row = $query->fetch();
         }
 
@@ -129,7 +127,6 @@
             $query->execute(array(
                 'id' => $this->id
             ));
-
             $row = $query->fetch();
         }
     } // End of class
