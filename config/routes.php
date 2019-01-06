@@ -12,6 +12,10 @@
     //  Routing for department controller
     // --------------------------------------------------
 
+    $routes->get('/department/', function() {
+        DepartmentController::showAll();
+    });
+
     $routes->get('/department/all', function() {
         DepartmentController::showAll();
     });
