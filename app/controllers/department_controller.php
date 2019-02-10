@@ -9,6 +9,13 @@
             $content = array(
                 'departments' => DepartmentModel::readAll()
             );
-            View::make('department_list', $content);
+            View::make('department/all', $content);
+        }
+
+        public static function show($id) {
+            $content = array(
+                'department' => DepartmentModel::read($id)
+            );
+            View::make('department/one', $content);
         }
     }

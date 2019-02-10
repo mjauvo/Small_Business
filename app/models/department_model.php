@@ -46,7 +46,7 @@
 
         /**
          * C [R] U D
-         * Fetches a department from database.
+         * Retrieves a department from database.
          *
          * @param $id
          * @return \DepartmentModel
@@ -72,7 +72,7 @@
 
         /**
          * C [R] U D
-         * Fetches all departments from database.
+         * Retrieves all departments from database.
          * 
          * @return \DepartmentModel
          */
