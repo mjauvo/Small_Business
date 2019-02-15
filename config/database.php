@@ -17,8 +17,8 @@
       ),
       'mysql' => array(
         'resource' => 'mysql:unix_socket=/home/KAYTTAJATUNNUS/mysql/socket;dbname=mysql',
-        'username' => 'root',
-        'password' => 'SALASANA'
+        'username' => '', // user
+        'password' => ''  // pass
       )
     );
 
