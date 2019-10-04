@@ -1,9 +1,12 @@
 <?php
     /**
-     * DepartmentModel
-     * --A model class representing a department where employees work.
+     * -- DepartmentModel --
+     * 
+     * A model class representing a department where
+     * employees work and responsible for Department
+     * data.
      *
-     * @author Markus J. Auvo 2018
+     * @author Markus J. Auvo 2019
      */
     class DepartmentModel extends BaseModel
     {
@@ -33,7 +36,7 @@
          * @param $department
          */
         public static function create($department) {
-            $sql = "INSERT INTO TABLE tblDepartment";
+            $sql = "INSERT INTO tblDepartment";
             $sql .= "VALUES (:id, :name);";
 
             $query = DB::connection()->prepare($sql);
@@ -41,17 +44,17 @@
                 'id' => $this->id,
                 'name' => $this->name
             ));
-            $row = $query->fetch();
         }
 
         /**
          * C [R] U D
-         * Retrieves a department from database.
+         * Retrieves a department from database
+         * based on its database identifier.
          *
          * @param $id
          * @return \DepartmentModel
          */
-        public static function read($id) {
+        public static function readById($id) {
             $sql  = "SELECT * ";
             $sql .= "FROM tblDepartment ";
             $sql .= "WHERE ID = :id LIMIT 1;";
@@ -66,7 +69,6 @@
                     'name'  => $row['departmentname']
                 ));
             }
-
             return $department;
         }
 
@@ -90,10 +92,10 @@
                     'name'  => $row['departmentname']
                 ));
             }
-
             return $departments;
         }
 
+<<<<<<< HEAD
 	/**
 	 * C R [U] D
 	 * Updates a department in database.
@@ -101,6 +103,15 @@
 	 * @param type $id
 	 */
         public static function update() {
+=======
+		/**
+		 * C R [U] D
+		 * Updates a department in database.
+		 * 
+		 * @param type $id
+		 */
+        public static function updateName() {
+>>>>>>> 3d54ed97f6db3888273cb8f9b225e092da182a8d
             $sql  = "UPDATE tblDepartment ";
             $sql .= "SET name=:name ";
             $sql .= "WHERE id=:id RETURNING id;";
