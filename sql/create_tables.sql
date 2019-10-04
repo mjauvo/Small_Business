@@ -164,8 +164,7 @@ CREATE TABLE tblProduct(
     supplierID              SMALLINT NOT NULL,
     unitPrice               NUMERIC (6,2) NOT NULL,
     reorderPoint            INTEGER NOT NULL,
-    onHandInventory         INTEGER NOT NULL,
-    bookedOrdersInventory   INTEGER NOT NULL,
+    inventory               INTEGER NOT NULL,
     PRIMARY KEY (ID),
     FOREIGN KEY (categoryID) REFERENCES tblProductCategory (ID)
         ON DELETE RESTRICT

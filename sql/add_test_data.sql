@@ -30,11 +30,11 @@ VALUES
 INSERT INTO
     tblDepartment
 VALUES
-    (10, 'Purchasing'),
-    (20, 'Warehousing & Shipping'),
-    (30, 'Sales & Marketing'),
-    (40, 'Finance & Accounting'),
-    (50, 'Human Resources');
+    (30, 'Purchasing'),
+    (40, 'Warehousing & Shipping'),
+    (50, 'Sales & Marketing'),
+    (60, 'Finance & Accounting'),
+    (70, 'Human Resources');
 
 INSERT INTO tblForwarder VALUES ();
 

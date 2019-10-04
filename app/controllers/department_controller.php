@@ -1,21 +1,25 @@
 <?php
     /**
-     * Description of DepartmentController
+     * -- DepartmentController --
+     * 
+     * A controller class responsible for user interaction
+     * regarding a department.
      *
-     * @author mjauv
+     * @author Markus J. Auvo 2019
      */
-    class DepartmentController extends BaseController {
+    class DepartmentController extends BaseController
+    {
+        public static function showById($id) {
+            $content = array(
+                'department' => DepartmentModel::readById($id)
+            );
+            View::make('department/one', $content);
+        }
+
         public static function showAll() {
             $content = array(
                 'departments' => DepartmentModel::readAll()
             );
-            View::make('department/all', $content);
-        }
-
-        public static function show($id) {
-            $content = array(
-                'department' => DepartmentModel::read($id)
-            );
-            View::make('department/one', $content);
+            View::make('department/many', $content);
         }
     }

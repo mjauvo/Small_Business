@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if message %}
+    <div class="alert alert-success">
+        {{message}}
+    </div>
+    {% elseif error %}
+    <div class="alert alert-danger">
+        {{error}}
+    </div>
+    {% endif %}
+    <div class="page-header">
+        <h1>{{product.name}} ({{product.id}})</h1>
+    </div>
+    <div class="bottom-left">
+    </div>
+{% endblock %}
