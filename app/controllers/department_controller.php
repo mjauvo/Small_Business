@@ -4,7 +4,8 @@
      *
      * @author mjauv
      */
-    class DepartmentController extends BaseController {
+    class DepartmentController extends BaseController
+    {
         public static function showAll() {
             $content = array(
                 'departments' => DepartmentModel::readAll()

@@ -1,11 +1,11 @@
 <?php
     /**
-     * DepartmentModel
-     * --A model class representing a department where employees work.
+     * ProductCategoryModel
+     * --A model class representing a product category.
      *
      * @author Markus J. Auvo 2018
      */
-    class DepartmentModel extends BaseModel
+    class ProductCategoryModel extends BaseModel
     {
         // --------------------------------------------------
         //  A T T R I B U T E S
@@ -28,12 +28,12 @@
 
         /**
          * [C] R U D
-         * Stores a new department in database.
+         * Stores a new product category in database.
          *
-         * @param $department
+         * @param $product_category
          */
-        public static function create($department) {
-            $sql = "INSERT INTO TABLE tblDepartment";
+        public static function create($product_category) {
+            $sql = "INSERT INTO TABLE tblProductCategory";
             $sql .= "VALUES (:id, :name);";
 
             $query = DB::connection()->prepare($sql);
@@ -46,14 +46,14 @@
 
         /**
          * C [R] U D
-         * Retrieves a department from database.
+         * Retrieves a product category from database.
          *
          * @param $id
-         * @return \DepartmentModel
+         * @return \ProductCategoryModel
          */
         public static function read($id) {
             $sql  = "SELECT * ";
-            $sql .= "FROM tblDepartment ";
+            $sql .= "FROM tblProductCategory ";
             $sql .= "WHERE ID = :id LIMIT 1;";
 
             $query = DB::connection()->prepare($sql);
@@ -61,47 +61,47 @@
             $row = $query->fetch();
 
             if($row) {
-                $department = new DepartmentModel(array(
+                $product_category = new ProductCategoryModel(array(
                     'id'    => $row['id'],
-                    'name'  => $row['departmentname']
+                    'name'  => $row['name']
                 ));
             }
 
-            return $department;
+            return $product_category;
         }
 
         /**
          * C [R] U D
-         * Retrieves all departments from database.
+         * Retrieves all product categories from database.
          * 
-         * @return \DepartmentModel
+         * @return \ProductCategoryModel
          */
         public static function readAll() {
             $sql = "SELECT * ";
-            $sql .= "FROM tblDepartment";
+            $sql .= "FROM tblProductCategory";
 
             $query = DB::connection()->prepare($sql);
             $query->execute();
             $rows = $query->fetchAll();
 
             foreach($rows as $row) {
-                $departments[] = new DepartmentModel(array(
+                $product_categories[] = new ProductCategoryModel(array(
                     'id'    => $row['id'],
-                    'name'  => $row['departmentname']
+                    'name'  => $row['name']
                 ));
             }
 
-            return $departments;
+            return $product_categorys;
         }
 
 	/**
 	 * C R [U] D
-	 * Updates a department in database.
+	 * Updates a product_category in database.
 	 * 
 	 * @param type $id
 	 */
         public static function update() {
-            $sql  = "UPDATE tblDepartment ";
+            $sql  = "UPDATE tblProductCategory ";
             $sql .= "SET name=:name ";
             $sql .= "WHERE id=:id RETURNING id;";
 
@@ -115,12 +115,12 @@
 
         /**
          * C R U [D]
-         * Deletes a department from database.
+         * Deletes a product_category from database.
          * 
          * @param type $id
          */
         public static function delete($id) {
-            $sql  = "DELETE FROM tblDepartment ";
+            $sql  = "DELETE FROM tblProductCategory ";
             $sql .= "WHERE id= :id;";
 
             $query = DB::connection()->prepare($sql);
