@@ -13,6 +13,7 @@
 
         public $id;
         public $name;
+        public $description;
 
         // --------------------------------------------------
         //  C O N S T R U C T O R
@@ -34,12 +35,13 @@
          */
         public static function create($product_category) {
             $sql = "INSERT INTO TABLE tblProductCategory";
-            $sql .= "VALUES (:id, :name);";
+            $sql .= "VALUES (:id, :name, :description);";
 
             $query = DB::connection()->prepare($sql);
             $query->execute(array(
-                'id' => $this->id,
-                'name' => $this->name
+                'id'            => $this->id,
+                'name'          => $this->name,
+                'description'   => $this->description
             ));
             $row = $query->fetch();
         }
@@ -62,11 +64,11 @@
 
             if($row) {
                 $product_category = new ProductCategoryModel(array(
-                    'id'    => $row['id'],
-                    'name'  => $row['name']
+                    'id'            => $row['id'],
+                    'name'          => $row['name'],
+                    'description'   => $row['description']
                 ));
             }
-
             return $product_category;
         }
 
@@ -86,12 +88,12 @@
 
             foreach($rows as $row) {
                 $product_categories[] = new ProductCategoryModel(array(
-                    'id'    => $row['id'],
-                    'name'  => $row['name']
+                    'id'            => $row['id'],
+                    'name'          => $row['name'],
+                    'description'   => $row['description']
                 ));
             }
-
-            return $product_categorys;
+            return $product_categories;
         }
 
 	/**
@@ -102,13 +104,14 @@
 	 */
         public static function update() {
             $sql  = "UPDATE tblProductCategory ";
-            $sql .= "SET name=:name ";
+            $sql .= "SET name=:name, description=:description ";
             $sql .= "WHERE id=:id RETURNING id;";
 
             $query = DB::connection()->prepare($sql);
             $query->execute(array(
-                'name' => $this->name,
-                'id' => $this->id
+                'id'            => $this->id,
+                'name'          => $this->name,
+                'description'   => $this->description
             ));
             $row = $query->fetch();
         }
