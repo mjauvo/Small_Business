@@ -95,30 +95,24 @@
             return $departments;
         }
 
-<<<<<<< HEAD
 	/**
 	 * C R [U] D
 	 * Updates a department in database.
 	 * 
 	 * @param type $id
 	 */
-        public static function update() {
-=======
 		/**
 		 * C R [U] D
 		 * Updates a department in database.
 		 * 
 		 * @param type $id
 		 */
-        public static function updateName() {
->>>>>>> 3d54ed97f6db3888273cb8f9b225e092da182a8d
+        public static function update($id) {
             $sql  = "UPDATE tblDepartment ";
-            $sql .= "SET name=:name ";
             $sql .= "WHERE id=:id RETURNING id;";
 
             $query = DB::connection()->prepare($sql);
             $query->execute(array(
-                'name' => $this->name,
                 'id' => $this->id
             ));
             $row = $query->fetch();
