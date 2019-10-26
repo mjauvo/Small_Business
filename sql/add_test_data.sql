@@ -7,8 +7,8 @@
 INSERT INTO
     tblCustomerType
 VALUES
-    (11, 'B2C'),
-    (21, 'B2B');
+    (11, 'B2C'),    -- Consumer customers
+    (21, 'B2B');    -- Business customers
 
 INSERT INTO
     tblEmploymentLevel
@@ -22,10 +22,10 @@ VALUES
 INSERT INTO
     tblEmploymentType
 VALUES
-    (51, 'Fixed term, part-time'),
-    (55, 'Fixed term, full-time'),
-    (91, 'Permanent, part-time'),
-    (95, 'Permanent, full-time');
+    (55, 'Fixed term, part-time'),
+    (59, 'Fixed term, full-time'),
+    (95, 'Permanent, part-time'),
+    (99, 'Permanent, full-time');
 
 INSERT INTO
     tblDepartment
