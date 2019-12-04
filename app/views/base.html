@@ -14,6 +14,11 @@
             <script src="{{base_path}}/assets/bootstrap/js/bootstrap.min.js"></script>
             <script src="{{base_path}}/assets/js/site.js"></script>
         {% endblock %}
+		<script>
+			$(document).ready(function(){
+			$('[data-toggle="tooltip"]').tooltip(); 
+			});
+		</script>
     </head>
     <body>
         <!-- NAVIGATION -->
@@ -34,9 +39,32 @@
                         <li><a href="{{base_path}}">Home</a></li>
                         <li><a href="{{base_path}}/department/all">Departments</a></li>
                     </ul>
-                </div>
-            </div>
-        </nav>
+                    <!-- USER IS LOGGED IN -->
+					{% if loggedin_user %}
+					<form class="nav navbar-form navbar-right" method="post" action="{{base_path}}/logout">
+						<button type="submit" class="btn btn-primary">Logout&nbsp;&nbsp;<span class="glyphicon glyphicon-log-out"></span></button>
+					</form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class='navbar-text'>{{loggedin_user.name}}</li>
+                    </ul>
+                    <!-- USER IS NOT LOGGED IN -->
+					{% else %}
+                    <!--
+                    <form class="nav navbar-form navbar-right" method="get" action="{{base_path}}/login">
+						<button type="submit" class="btn btn-primary">Login&nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></button>
+					</form>
+					<form class="nav navbar-form navbar-right" method="get" action="{{base_path}}/register">
+						<button type="submit" class="btn btn-primary">Register&nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></button>
+					</form>
+                    -->
+                    <ul class="nav navbar-nav navbar-right">
+						<li role="button"><a href="{{base_path}}/register"><span class="glyphicon glyphicon-user"></span>&nbsp;Register as customer</a></li>
+                        <li><a href="{{base_path}}/login"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a></li>
+                    </ul>
+					{% endif %}
+				</div>
+			</div>
+		</nav>
 
         <!-- CONTENT -->
         <div id="main-container">

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>
+			{% block title %}
+				Tietokantasovellus 2015 :: Kamalaari
+			{% endblock %}
+		</title>
+
+		{% block head %}
+		<!-- Bootstrap (tyylitiedosto) -->
+		<link href="{{base_path}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Oma tyylitiedostomme -->
+		<link href="{{base_path}}/assets/css/site.css" rel="stylesheet">
+		{% endblock %}
+
+		<!-- Skriptit -->
+		<script type="text/javascript" src="{{base_path}}/vendor/bootstrap/js/bootstrap.min.js"></script>
+		<script>
+			$(document).ready(function(){
+			$('[data-toggle="tooltip"]').tooltip(); 
+			});
+		</script>
+	</head>
+
+	<body>
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<!-- Sovelluksen nimi -->
+					{% if loggedin_user %}
+						{% if loggedin_user.role == 1 %}
+						<a class="navbar-brand" href="{{base_path}}/customers/{{loggedin_user.id}}">Kamalaari</a>
+						{% elseif loggedin_user.role == 2 %}
+						<a class="navbar-brand" href="{{base_path}}/employees/{{loggedin_user.id}}">Kamalaari</a>
+						{% endif %}
+					{% else %}
+					<a class="navbar-brand" href="{{base_path}}">Kamalaari</a>
+					{% endif %}
+				</div>
+				<div class="collapse navbar-collapse" id="navigation">
+					<ul class="nav navbar-nav">
+						<!-- Navigaation linkit -->
+						<li><a href="{{base_path}}/products" data-toggle="tooltip" title="Tuotevalikoima">Tuotevalikoima</a></li>
+						{% if loggedin_user %}
+							{% if loggedin_user.role == 1 %}
+							<!-- Asiakas -->
+							<li><a href="{{base_path}}/customers/{{loggedin_user.id}}/sale_orders" data-toggle="tooltip" title="Tilaushistoria">Tilaushistoria</a></li>
+							<li><a href="{{base_path}}/customers/{{loggedin_user.id}}/sale_invoices" data-toggle="tooltip" title="Laskutushistoria">Laskutushistoria</a></li>
+							<li><a href="{{base_path}}/customers/{{loggedin_user.id}}/account" data-toggle="tooltip" title="Käyttäjätili">Käyttäjätili</a></li>
+							<li role="separator" class="divider"></li>
+							<li class="label-info">
+								<a href="{{base_path}}/customers/{{loggedin_user.id}}/cart">Ostoskori <span class="badge">{{user_cart|length}}</span></a>
+							</li>
+							{% endif %}
+						{% else %}
+						<li><a href="{{base_path}}/pages/company" data-toggle="tooltip" title="Tietoa yrityksestä">Tietoa yrityksestä</a></li>
+						{% endif %}
+					</ul>
+					{% if loggedin_user %}
+					<form class="nav navbar-form navbar-right" method="post" action="{{base_path}}/logout">
+						<button type="submit" class="btn btn-default">Logout <span class="glyphicon glyphicon-log-out"></span></button>
+					</form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class='navbar-text'>{{loggedin_user.name}}</li>
+                    </ul>
+					{% else %}
+                    <ul class="nav navbar-nav navbar-right">
+						<li><a href="{{base_path}}/register"><span class="glyphicon glyphicon-user"></span> Rekisteröidy asiakkaaksi</a></li>
+						<li><a href="{{base_path}}/login"><span class="glyphicon glyphicon-log-in"></span> Kirjaudu sisään</a></li>
+                    </ul>
+					{% endif %}
+				</div>
+			</div>
+		</nav>
+
+		<div id="main-container">
+			<!-- Dynaaminen sisältö tulee tähän -->
+			{% block content %}{% endblock %}
+		</div>
+
+		{% block body %}
+		<!-- jQuery -->
+		<script src="{{base_path}}/vendor/jquery.min.js"></script>
+
+		<!-- Bootstrap (skriptitiedosto) -->
+		<script src="{{base_path}}/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+		<!-- Oma skriptitiedostomme -->
+		<script src="{{base_path}}/assets/js/site.js"></script>
+		{% endblock %}
+	</body>
+</html>

@@ -1,11 +1,26 @@
 <?php
-
     // --------------------------------------------------
     //  Routing for default controller
     // --------------------------------------------------
 
+    $routes->get('', function() {
+        IndexController::index();
+    });
+
     $routes->get('/', function() {
         IndexController::index();
+    });
+
+    // --------------------------------------------------
+    //  Routing for user controller
+    // --------------------------------------------------
+
+    $routes->get('/login', function() {
+        UserController::showLogin();
+    });
+
+    $routes->get('/register', function() {
+        UserController::showRegister();
     });
 
     // --------------------------------------------------

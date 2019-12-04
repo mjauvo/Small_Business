@@ -5,6 +5,12 @@
      * A model class representing a department where
      * employees work and responsible for Department
      * data.
+     * 
+     * 10 -- Purchasing
+     * 20 -- Warehousing & Shipping
+     * 30 -- Sales & Marketing
+     * 40 -- Finance & Accounting
+     * 50 -- Human Resources
      *
      * @author Markus J. Auvo 2019
      */
@@ -80,7 +86,7 @@
          */
         public static function readAll() {
             $sql = "SELECT * ";
-            $sql .= "FROM tblDepartment";
+            $sql .= "FROM tblDepartment;";
 
             $query = DB::connection()->prepare($sql);
             $query->execute();
